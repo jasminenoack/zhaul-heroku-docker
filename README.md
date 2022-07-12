@@ -91,3 +91,16 @@ In a second window run:
 ```shell script
 docker exec -it frontend npm run test
 ```
+
+# Using tmux
+
+You can use tmux to help you run the app if desired. 
+
+To install use 
+
+```shell
+brew install tmux
+```
+
+You can run [setupe-tmux](./setup-tmux.sh) to set up a tmux shell set with prefilled commands 
+for running the program and tests. 
