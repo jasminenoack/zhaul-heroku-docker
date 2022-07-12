@@ -27,7 +27,7 @@ export function TruckCard(props: TruckInterface) {
       <Card.Body>
         <Card.Title>{truckTypeMap[props.type]}: {props.name}</Card.Title>
         <Card.Text>
-          Price: ${props.pricePerHour}
+          Price per hour: ${props.pricePerHour}
         </Card.Text>
         <Button variant="primary">Reserve</Button>
       </Card.Body>
