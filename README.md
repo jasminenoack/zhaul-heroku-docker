@@ -46,7 +46,7 @@ docker-compose down
 ```
 
 
-## 3) Running tests
+## 3) Running backend tests
 
 For the moment to run the tests you need to have the container for the backend already up.
 This shouldn't be required, but the way that docker is set up you can't bring up the backend container and 
@@ -70,3 +70,24 @@ You can also run the first command headless if you want to run only a single win
 Currently, the tests are mixed in with the code. As a codebase gets larger this could cause time issues with 
 discovery and may want to be moved out to its own location. However, I do think it makes it easier to discover 
 tests and know which locations are potentially missing tests. 
+
+Long term it would also be nice if these could be run on watch, but I haven't added the infrastructure for that yet. 
+They don't currently take long enough to run that it's a blocker. 
+
+
+## 4) Running Frontend tests
+
+For the moment to run the tests you need to have the container for the frontend already up.
+This shouldn't be required, but the way that docker is set up you can't bring up the frontend container and 
+run a command other than the default currently. This is fixable, but on a brief google I was unable to find the 
+fix.
+
+```shell script
+docker compose up frontend
+```
+
+In a second window run:
+
+```shell script
+docker exec -it frontend npm run test
+```
