@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../components/App';
+import {BrowserRouter} from "react-router-dom";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const pre = screen.getByText("django-react-docker-heroku-template");
-  expect(pre).toBeInTheDocument();
+test('Renders nav bar', () => {
+  render(<BrowserRouter><App /></BrowserRouter>);
+  expect(screen.getByText('Home')).toBeInTheDocument()
+  expect(screen.getByText('About')).toBeInTheDocument()
 });
