@@ -1,0 +1,213 @@
+[
+    {
+        "model": "api.truck",
+        "pk": 1,
+        "fields": {
+          "name": "Paul McCartney",
+          "price_per_hour": "15.50",
+          "truck_type": "pick_up"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 2,
+        "fields": {
+          "name": "George Harrison",
+          "price_per_hour": "12.50",
+          "truck_type": "pick_up"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 3,
+        "fields": {
+          "name": "John Lennon",
+          "price_per_hour": "15.50",
+          "truck_type": "pick_up"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 4,
+        "fields": {
+          "name": "Ringo Starr",
+          "price_per_hour": "18.50",
+          "truck_type": "pick_up"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 5,
+        "fields": {
+          "name": "John Entwistle",
+          "price_per_hour": "20.50",
+          "truck_type": "van"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 6,
+        "fields": {
+          "name": "Keith Moon",
+          "price_per_hour": "30.50",
+          "truck_type": "van"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 7,
+        "fields": {
+          "name": "Doug Sandom",
+          "price_per_hour": "20.50",
+          "truck_type": "van"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 8,
+        "fields": {
+          "name": "Kenney Jones",
+          "price_per_hour": "20.50",
+          "truck_type": "van"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 9,
+        "fields": {
+          "name": "Adam Levine",
+          "price_per_hour": "45.50",
+          "truck_type": "small"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 10,
+        "fields": {
+          "name": "Jesse Carmichael",
+          "price_per_hour": "30.50",
+          "truck_type": "small"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 11,
+        "fields": {
+          "name": "James Valentine",
+          "price_per_hour": "30.50",
+          "truck_type": "small"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 12,
+        "fields": {
+          "name": "Matt Flynn",
+          "price_per_hour": "30.50",
+          "truck_type": "small"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 13,
+        "fields": {
+          "name": "PJ Morton",
+          "price_per_hour": "30.50",
+          "truck_type": "small"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 14,
+        "fields": {
+          "name": "Sam Farrar",
+          "price_per_hour": "30.50",
+          "truck_type": "small"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 15,
+        "fields": {
+          "name": "Pat Monahan",
+          "price_per_hour": "75.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 16,
+        "fields": {
+          "name": "Hector Maldonado",
+          "price_per_hour": "55.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 17,
+        "fields": {
+          "name": "Jerry Becker",
+          "price_per_hour": "55.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 18,
+        "fields": {
+          "name": "Nikita Houston",
+          "price_per_hour": "55.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 19,
+        "fields": {
+          "name": "Sakai Smith",
+          "price_per_hour": "55.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 20,
+        "fields": {
+          "name": "Matt Musty",
+          "price_per_hour": "55.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 21,
+        "fields": {
+          "name": "Taylor Locke",
+          "price_per_hour": "55.50",
+          "truck_type": "medium"
+        }
+    },
+    {
+        "model": "api.truck",
+        "pk": 22,
+        "fields": {
+          "name": "Vladimir John Ondrasik III",
+          "price_per_hour": "100.50",
+          "truck_type": "large"
+        }
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+

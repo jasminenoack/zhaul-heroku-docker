@@ -92,6 +92,20 @@ In a second window run:
 docker exec -it frontend npm run test
 ```
 
+## Seeding data 
+To seed data you need to run the backend and then exec into it and run 
+the loaddata command 
+
+In one window run 
+```shell script
+docker compose up frontend
+```
+
+in another run
+```shell
+docker exec -it backend ./manage.py loaddata ./seeds/trucks.json
+```
+
 # Using tmux
 
 You can use tmux to help you run the app if desired. 
