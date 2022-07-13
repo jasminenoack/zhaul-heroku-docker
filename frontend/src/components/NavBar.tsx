@@ -1,10 +1,12 @@
 import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 import {UserContext} from "../contexts/UserContext";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import Axios from "axios";
+import LoginModal from "./Login";
+import React from 'react';
 
 export function NavBar() {
-  const {login, logout, username} = useContext(UserContext);
+  const {showLogin, logout, username, setShowLogin, showCreateUser, setShowCreateUser} = useContext(UserContext);
 
   return (
     <Navbar bg="light" expand="lg">
@@ -18,8 +20,11 @@ export function NavBar() {
             <NavDropdown title={username ? username : "Account"} id="basic-nav-dropdown">
               {
                 username ?
-                  <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
-                  : <NavDropdown.Item onClick={() => login({username: 'vitor', password: 'password'})}>Login</NavDropdown.Item>
+                  <React.Fragment><NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item></React.Fragment>
+                  : <React.Fragment>
+                    <NavDropdown.Item onClick={() => setShowLogin(!showLogin)}>Login</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => setShowCreateUser(!showCreateUser)}>Create User</NavDropdown.Item>
+                  </React.Fragment>
               }
 
               <NavDropdown.Item href="#action/3.2">
@@ -37,3 +42,4 @@ export function NavBar() {
     </Navbar>
   )
 }
+

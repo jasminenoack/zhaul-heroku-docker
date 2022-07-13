@@ -1,2 +1,2 @@
 from .truck import TruckSerializer
-from .user import UserSerializer
+from .user import UserSerializer, UserCreateSerializer

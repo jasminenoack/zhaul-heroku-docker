@@ -10,13 +10,23 @@ export interface LoginType {
 export const UserContextDefault = {
   username: '',
   login: (params: LoginType) => {},
+  createUser: (params: LoginType) => {},
   logout: () => {},
+  showLogin: false,
+  setShowLogin: (value: boolean) => {},
+  showCreateUser: false,
+  setShowCreateUser: (value: boolean) => {},
 }
 
 interface UserContext {
   username: string;
   login: (params: LoginType) => void;
+  createUser: (params: LoginType) => void;
   logout: () => void;
+  showLogin: boolean;
+  setShowLogin: (value: boolean) => void;
+  showCreateUser: boolean;
+  setShowCreateUser: (value: boolean) => void;
 }
 
 export const UserContext = React.createContext<UserContext>(UserContextDefault);
@@ -47,16 +57,25 @@ function getCookie(name: string) {
 export function UserContextProvider({children}: {children: ReactNode}) {
   const {data, refetch} = useQuery('user', getCurrentUser);
   const csrfToken = getCookie('CSRF-TOKEN') as string;
+  const [showLogin, setShowLogin] = useState(false);
+  const [showCreateUser, setShowCreateUser] = useState(false);
+
+  function onAuthenticationSuccess() {
+    refetch()
+    setShowLogin(false)
+    setShowCreateUser(false)
+  }
 
   function loginFunction (params: LoginType) {
     return axios.post(
         '/api/auth/login/',
           params,
+      {'headers': {'X-CSRFToken': csrfToken}},
         )
     }
     const login: any = useMutation(
         loginFunction,
-        {onSuccess: () => {refetch()}}
+        {onSuccess: onAuthenticationSuccess}
       )
 
   function logoutFunction() {
@@ -67,14 +86,31 @@ export function UserContextProvider({children}: {children: ReactNode}) {
     }
     const logout: any = useMutation(
         logoutFunction,
-        {onSuccess: () => {refetch()}}
+        {onSuccess: onAuthenticationSuccess}
+      )
+
+    function createUserFunction(params: LoginType) {
+      return axios.post(
+        '/api/auth/register/',
+          params,
+        {'headers': {'X-CSRFToken': csrfToken}},
+        )
+    }
+    const createUser: any = useMutation(
+        createUserFunction,
+        {onSuccess: onAuthenticationSuccess}
       )
 
     const context = {
       ...UserContextDefault,
       login: login.mutate,
       logout: logout.mutate,
-      username: data?.username
+      username: data?.username,
+      showLogin,
+      setShowLogin,
+      showCreateUser,
+      setShowCreateUser,
+      createUser: createUser.mutate,
     }
     return (
         <UserContext.Provider value={context}>

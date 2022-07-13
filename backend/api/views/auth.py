@@ -1,12 +1,13 @@
 import json
 
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from rest_framework import permissions
 
 
 from rest_framework.views import APIView
-from ..serializers import UserSerializer
+from ..serializers import UserSerializer, UserCreateSerializer
 
 
 class LoginAPIView(APIView):
@@ -49,3 +50,20 @@ class UserInfo(APIView):
     permission_classes = [permissions.AllowAny]
     def get(self, request):
         return JsonResponse(UserSerializer(request.user).data)
+
+
+class RegisterUserView(APIView):
+    permission_classes = [permissions.AllowAny]
+    def post(self, request):
+        data = json.loads(request.body)
+        username = data.get('username')
+        password = data.get('password')
+        serializer = UserCreateSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        user = User.objects.create(username=username)
+        user.set_password(password)
+        user.save()
+        # confirm we can use the username and password
+        authenticate(username=username, password=password)
+        login(request, user)
+        return JsonResponse({})
