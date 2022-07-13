@@ -56,7 +56,7 @@ function getCookie(name: string) {
 
 export function UserContextProvider({children}: {children: ReactNode}) {
   const {data, refetch} = useQuery('user', getCurrentUser);
-  const csrfToken = getCookie('CSRF-TOKEN') as string;
+  const csrfToken = getCookie('csrftoken') as string;
   const [showLogin, setShowLogin] = useState(false);
   const [showCreateUser, setShowCreateUser] = useState(false);
 
