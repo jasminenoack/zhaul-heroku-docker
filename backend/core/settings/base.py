@@ -158,3 +158,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # required by django.contrib.sites
 SITE_ID = 1
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://jas-zhaul.herokuapp.com/'
+]
