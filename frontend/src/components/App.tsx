@@ -8,19 +8,22 @@ import {
    QueryClient,
    QueryClientProvider,
  } from 'react-query'
+import {UserContextProvider} from "../contexts/UserContext";
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavBar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-      </Routes>
-    </QueryClientProvider>
-  )
+      <UserContextProvider>
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Routes>
+    </UserContextProvider>
+  </QueryClientProvider>
+)
 }
 
 

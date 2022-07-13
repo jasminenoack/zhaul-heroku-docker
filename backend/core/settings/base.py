@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'corsheaders',
     # rest framework
     'rest_framework',
-    'rest_framework.authtoken',
     # apps
     'api',
     'core',
@@ -135,13 +134,14 @@ USE_TZ = True
 # Django REST Framework config
 # https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        ('rest_framework.permissions.AllowAny',)
-    ),
-
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        ('rest_framework.authentication.TokenAuthentication',)
-    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 # Static files (CSS, JavaScript, Images)

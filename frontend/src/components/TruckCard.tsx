@@ -20,7 +20,6 @@ const truckTypeMap: {[key: string]: string} = {
 }
 
 export function TruckCard(props: TruckInterface) {
-  console.log(props)
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={imageMap[props.type]} />

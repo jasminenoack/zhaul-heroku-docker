@@ -1,6 +1,7 @@
 import {
    useQuery,
  } from 'react-query'
+import Axios from 'axios'
 import {useState} from "react";
 
 import {Card, Placeholder} from 'react-bootstrap'
@@ -39,7 +40,6 @@ function convertTruckData(trucks: any): TruckInterface[] {
 }
 
 
-
 export function Home() {
   const [trucks, setTrucks] = useState<string>("");
 
@@ -48,8 +48,6 @@ export function Home() {
   ).then(res =>
      res.json()
   ))
-
-  console.log(query)
 
   if (query.isLoading) {
     return <Loading/>
