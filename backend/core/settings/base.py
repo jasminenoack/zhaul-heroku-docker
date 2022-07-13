@@ -161,5 +161,5 @@ SITE_ID = 1
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://jas-zhaul.herokuapp.com/'
+    'https://jas-zhaul.herokuapp.com'
 ]
