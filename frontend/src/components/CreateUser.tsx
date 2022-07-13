@@ -37,6 +37,3 @@ function CreateUser() {
 
 export default CreateUser;
 
-
-
-// () => login({username: 'vitor', password: 'password'})

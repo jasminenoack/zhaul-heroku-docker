@@ -92,6 +92,10 @@ In a second window run:
 docker exec -it frontend npm run test
 ```
 
+I only wrote display tests for the front end. 
+This was to save time and not have to set up the fake 
+server/axios for the requests and react query. 
+
 ## Seeding data 
 To seed data you need to run the backend and then exec into it and run 
 the loaddata command 

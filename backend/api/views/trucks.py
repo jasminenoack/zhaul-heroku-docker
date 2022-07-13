@@ -11,3 +11,4 @@ class TruckViewSet(viewsets.ModelViewSet):
     queryset = Truck.objects.all().order_by('price_per_hour')
     serializer_class = TruckSerializer
     permission_classes = [permissions.DjangoModelPermissionsOrAnonReadOnly]
+

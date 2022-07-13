@@ -36,7 +36,3 @@ function LoginModal() {
 }
 
 export default LoginModal;
-
-
-
-// () => login({username: 'vitor', password: 'password'})

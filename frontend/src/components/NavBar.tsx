@@ -1,8 +1,6 @@
 import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 import {UserContext} from "../contexts/UserContext";
-import {useContext, useState} from "react";
-import Axios from "axios";
-import LoginModal from "./Login";
+import {useContext} from "react";
 import React from 'react';
 
 export function NavBar() {

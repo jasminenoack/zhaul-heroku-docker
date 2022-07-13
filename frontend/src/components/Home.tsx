@@ -1,8 +1,6 @@
 import {
    useQuery,
  } from 'react-query'
-import Axios from 'axios'
-import {useState} from "react";
 
 import {Card, Placeholder} from 'react-bootstrap'
 import {TruckInterface} from "./types";
@@ -41,8 +39,6 @@ function convertTruckData(trucks: any): TruckInterface[] {
 
 
 export function Home() {
-  const [trucks, setTrucks] = useState<string>("");
-
   const query = useQuery('trucks', () => fetch(
     '/api/trucks/'
   ).then(res =>

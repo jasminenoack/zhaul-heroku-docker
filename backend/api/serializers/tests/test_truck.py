@@ -11,10 +11,12 @@ class TrucksSerializerTestCase(TestCase):
             name='john',
             truck_type='van',
             price_per_hour=Decimal(5),
+            id=9,
         )
         serializer = TruckSerializer(truck)
         assert serializer.data == {
             'name': 'john',
             'truck_type': 'van',
-            'price_per_hour': '5.00'
+            'price_per_hour': '5.00',
+            'id': 9,
         }
