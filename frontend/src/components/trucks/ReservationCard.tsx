@@ -15,8 +15,8 @@ export function ReservationCard(props: ReservationInterface) {
   const {cancelReservation} = useContext(TruckContext)
 
   return (
-    <Card sx={{ width: 300, margin: '10px', float: 'left' }}>
-      <CardHeader title={props.truckName} subheader={truckTypeMap[props.truckType]} />
+    <Card sx={{width: 300, margin: '10px', float: 'left'}}>
+      <CardHeader title={props.truckName} subheader={truckTypeMap[props.truckType]}/>
       <CardMedia
         component="img"
         height="200px"
@@ -25,14 +25,14 @@ export function ReservationCard(props: ReservationInterface) {
         alt="Picture of truck"
       />
       <CardContent>
-          <Typography paragraph>Total cost: ${props.totalPrice}</Typography>
-          <Typography paragraph>
-            Start time: {props.startTime.toLocaleString()}
-          </Typography>
-          <Typography paragraph>
-            End time: {props.endTime.toLocaleString()}
-          </Typography>
-        </CardContent>
+        <Typography paragraph>Total cost: ${props.totalPrice}</Typography>
+        <Typography paragraph>
+          Start time: {props.startTime.toLocaleString()}
+        </Typography>
+        <Typography paragraph>
+          End time: {props.endTime.toLocaleString()}
+        </Typography>
+      </CardContent>
 
       <CardActions><Button onClick={() => cancelReservation(props.id)}>Cancel reservation</Button></CardActions>
     </Card>

@@ -75,6 +75,7 @@ class RegisterUserTestCase(TestCase):
     """
     Ideally this would have tests for the negative states as well.
     """
+
     def test_post(self):
         url = reverse('create_user')
         result = self.client.post(url, data=json.dumps({

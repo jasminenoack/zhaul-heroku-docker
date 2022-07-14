@@ -10,7 +10,7 @@ export function NavBar() {
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">ZHaul</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
@@ -21,7 +21,7 @@ export function NavBar() {
                   <React.Fragment><NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item></React.Fragment>
                   : <React.Fragment>
                     <NavDropdown.Item onClick={() => setShowLogin(!showLogin)}>Login</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => setShowCreateUser(!showCreateUser)}>Create User</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => setShowCreateUser(!showCreateUser)}>Create User</NavDropdown.Item>
                   </React.Fragment>
               }
 

@@ -13,15 +13,15 @@ export function getTrucks(url: string) {
   return fetch(
     url
   ).then(res =>
-     res.json()
+    res.json()
   )
 }
 
 export function getReservations() {
-  return  fetch(
-  '/api/reservations/'
+  return fetch(
+    '/api/reservations/'
   ).then(res =>
-     res.json()
+    res.json()
   )
 }
 
@@ -37,15 +37,17 @@ export function buildPostCreationFunction(startTime: Date, endTime: Date, csrfTo
       {'headers': {'X-CSRFToken': csrfToken}},
     )
   }
+
   return postCreateReservation
 }
 
-export function buildDeleteReservationFunction (csrfToken: string) {
+export function buildDeleteReservationFunction(csrfToken: string) {
   function deleteReservation(truckId: number) {
     return axios.delete(
       `/api/reservations/${truckId}/`,
       {'headers': {'X-CSRFToken': csrfToken}},
     );
   }
+
   return deleteReservation
 }

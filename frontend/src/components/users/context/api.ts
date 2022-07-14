@@ -3,8 +3,8 @@ import {LoginType} from "./types";
 
 export function getCurrentUser() {
   return axios.get('/api/current_user/').then(res => {
-      return res.data
-    }).catch(err => console.log(err));
+    return res.data
+  }).catch(err => console.log(err));
 }
 
 export function buildLoginPost(csrfToken: string) {
@@ -15,6 +15,7 @@ export function buildLoginPost(csrfToken: string) {
       {'headers': {'X-CSRFToken': csrfToken}},
     )
   }
+
   return loginFunction
 }
 
@@ -25,6 +26,7 @@ export function buildLogoutDelete(csrfToken: string) {
       {'headers': {'X-CSRFToken': csrfToken}},
     )
   }
+
   return logoutFunction
 }
 
@@ -36,5 +38,6 @@ export function buildCreateUserPost(csrfToken: string) {
       {'headers': {'X-CSRFToken': csrfToken}},
     )
   }
+
   return createUserFunction
 }

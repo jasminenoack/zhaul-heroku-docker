@@ -4,7 +4,6 @@ from django.http import JsonResponse
 from rest_framework import permissions, viewsets
 from dateutil.parser import parse
 
-
 from ..models import Reservation
 from ..models.helpers import get_available_trucks
 from ..serializers.reservation import ReservationSerializer
@@ -17,7 +16,7 @@ class ViewReservations(viewsets.ModelViewSet):
     def get_queryset(self):
         return Reservation.objects.filter(user=self.request.user).order_by(
             'start_datetime'
-        )
+        ).select_related('truck')
 
     def create(self, request):
         data = request.data

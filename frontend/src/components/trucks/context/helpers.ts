@@ -10,7 +10,7 @@ export function convertTruckData(trucks: any): TruckInterface[] {
 }
 
 export function convertReservationData(reservations: any): ReservationInterface[] {
-  return reservations.map((reservation: any)=> ({
+  return reservations.map((reservation: any) => ({
     startTime: new Date(reservation.start_time),
     endTime: new Date(reservation.end_time),
     totalPrice: reservation.total_price,

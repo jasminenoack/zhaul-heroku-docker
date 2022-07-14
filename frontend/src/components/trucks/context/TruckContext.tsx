@@ -15,18 +15,27 @@ import {
 export const TruckContextDefault = {
   startTime: new Date(),
   endTime: new Date(),
-  setStartTime: (value: Date) => {},
-  setEndTime: (value: Date) => {},
+  setStartTime: (value: Date) => {
+  },
+  setEndTime: (value: Date) => {
+  },
   truckType: null,
-  setTruckType: (value: string) => {},
+  setTruckType: (value: string) => {
+  },
   trucks: [],
   isLoadingTrucks: true,
-  createReservation: (truckId: number) => {},
+  createReservation: (truckId: number) => {
+  },
   successMessage: '',
+  setSuccessMessage: (message: '') => {
+  },
   reservations: [],
   isLoadingReservations: true,
-  cancelReservation: (reservationId: number) => {},
+  cancelReservation: (reservationId: number) => {
+  },
   cancelMessage: '',
+  setCancelMessage: (message: '') => {
+  },
 }
 
 interface TruckContext {
@@ -40,16 +49,18 @@ interface TruckContext {
   isLoadingTrucks: boolean;
   createReservation: (truckId: number) => void;
   successMessage: string;
+  setSuccessMessage: (message: '') => void,
   reservations: ReservationInterface[];
   isLoadingReservations: boolean;
   cancelReservation: (reservationId: number) => void;
   cancelMessage: string;
+  setCancelMessage: (message: '') => void,
 }
 
 export const TruckContext = React.createContext<TruckContext>(TruckContextDefault);
 
 
-export function TruckContextProvider({children}: {children: ReactNode}) {
+export function TruckContextProvider({children}: { children: ReactNode }) {
   const csrfToken = getCookie('csrftoken') as string;
   const [truckType, setTruckType] = useState('');
   const [startTime, setStartTime] = useState(addHours(1, new Date()));
@@ -104,28 +115,30 @@ export function TruckContextProvider({children}: {children: ReactNode}) {
   );
 
   const context = {
-      ...TruckContextDefault,
-      trucks: isLoadingTrucks? [] : convertTruckData(trucks),
-      isLoadingTrucks,
-      truckType,
-      setTruckType,
-      startTime,
-      setStartTime,
-      endTime,
-      setEndTime,
-      createReservation: createReservationMutation.mutate,
-      isLoadingReservations,
-      reservations: isLoadingReservations || !username ? [] : convertReservationData(reservations),
-      successMessage,
-      cancelReservation: cancelReservationMutation.mutate,
-      cancelMessage,
-    }
+    ...TruckContextDefault,
+    trucks: isLoadingTrucks ? [] : convertTruckData(trucks),
+    isLoadingTrucks,
+    truckType,
+    setTruckType,
+    startTime,
+    setStartTime,
+    endTime,
+    setEndTime,
+    createReservation: createReservationMutation.mutate,
+    isLoadingReservations,
+    reservations: isLoadingReservations || !username ? [] : convertReservationData(reservations),
+    successMessage,
+    cancelReservation: cancelReservationMutation.mutate,
+    cancelMessage,
+    setSuccessMessage,
+    setCancelMessage,
+  }
 
-    return (
-        <TruckContext.Provider value={context}>
-            <div>
-                {children}
-            </div>
-        </TruckContext.Provider>
-    )
+  return (
+    <TruckContext.Provider value={context}>
+      <div>
+        {children}
+      </div>
+    </TruckContext.Provider>
+  )
 }

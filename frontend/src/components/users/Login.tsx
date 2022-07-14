@@ -8,13 +8,20 @@ function LoginModal() {
   const {setShowLogin, login} = useContext(UserContext);
 
   return (
-    <Modal.Dialog style={{width: "100%", zIndex: 400, position: 'absolute', top: '100px', left: '50%', transform: 'translateX(-50%)'}}>
+    <Modal.Dialog style={{
+      width: "100%",
+      zIndex: 400,
+      position: 'absolute',
+      top: '100px',
+      left: '50%',
+      transform: 'translateX(-50%)'
+    }}>
       <Modal.Header>
         <Modal.Title>Login</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-         <Form>
+        <Form>
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control type="username" placeholder="Enter username" onChange={(e) => setUsername(e.target.value)}/>

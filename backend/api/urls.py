@@ -21,5 +21,3 @@ urlpatterns = [
     path('auth/logout/', LogoutAPIView.as_view(), name="api-auth-logout"),
     path('current_user/', UserInfo.as_view(), name='current_user'),
 ]
-
-

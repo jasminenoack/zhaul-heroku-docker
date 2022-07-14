@@ -3,13 +3,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from rest_framework import permissions
 
-
 from rest_framework.views import APIView
 from ..serializers import UserSerializer, UserCreateSerializer
 
 
 class LoginAPIView(APIView):
     permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         data = request.data
         username = data.get('username')
@@ -46,12 +46,14 @@ class LogoutAPIView(APIView):
 
 class UserInfo(APIView):
     permission_classes = [permissions.AllowAny]
+
     def get(self, request):
         return JsonResponse(UserSerializer(request.user).data)
 
 
 class RegisterUserView(APIView):
     permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         data = request.data
         username = data.get('username')

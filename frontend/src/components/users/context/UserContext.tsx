@@ -6,13 +6,18 @@ import {buildCreateUserPost, buildLoginPost, buildLogoutDelete, getCurrentUser} 
 
 export const UserContextDefault = {
   username: '',
-  login: (params: LoginType) => {},
-  createUser: (params: LoginType) => {},
-  logout: () => {},
+  login: (params: LoginType) => {
+  },
+  createUser: (params: LoginType) => {
+  },
+  logout: () => {
+  },
   showLogin: false,
-  setShowLogin: (value: boolean) => {},
+  setShowLogin: (value: boolean) => {
+  },
   showCreateUser: false,
-  setShowCreateUser: (value: boolean) => {},
+  setShowCreateUser: (value: boolean) => {
+  },
 }
 
 interface UserContext {
@@ -28,7 +33,7 @@ interface UserContext {
 
 export const UserContext = React.createContext<UserContext>(UserContextDefault);
 
-export function UserContextProvider({children}: {children: ReactNode}) {
+export function UserContextProvider({children}: { children: ReactNode }) {
   const {data, refetch} = useQuery('user', getCurrentUser);
   const csrfToken = getCookie('csrftoken') as string;
   const [showLogin, setShowLogin] = useState(false);
