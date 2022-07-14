@@ -20,7 +20,7 @@ class ViewReservations(viewsets.ModelViewSet):
         )
 
     def create(self, request):
-        data = json.loads(request.body)
+        data = request.data
         start_time = parse(data['start_time'])
         end_time = parse(data['end_time'])
         truck_id = data['truck_id']

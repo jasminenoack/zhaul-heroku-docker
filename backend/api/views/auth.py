@@ -1,5 +1,3 @@
-import json
-
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
@@ -13,7 +11,7 @@ from ..serializers import UserSerializer, UserCreateSerializer
 class LoginAPIView(APIView):
     permission_classes = [permissions.AllowAny]
     def post(self, request):
-        data = json.loads(request.body)
+        data = request.data
         username = data.get('username')
         password = data.get('password')
         if username is None:
@@ -55,7 +53,7 @@ class UserInfo(APIView):
 class RegisterUserView(APIView):
     permission_classes = [permissions.AllowAny]
     def post(self, request):
-        data = json.loads(request.body)
+        data = request.data
         username = data.get('username')
         password = data.get('password')
         serializer = UserCreateSerializer(data=data)

@@ -1,7 +1,8 @@
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, {ReactNode, useContext, useEffect, useState} from 'react';
 import {useQuery, useMutation} from 'react-query'
 import axios from 'axios'
 import {getCookie} from "./helpers";
+import {UserContext} from "./UserContext";
 
 export interface TruckInterface {
   name: string;
@@ -90,6 +91,7 @@ export function TruckContextProvider({children}: {children: ReactNode}) {
   const [endTime, setEndTime] = useState(addHours(3, new Date()));
   const [successMessage, setSuccessMessage] = useState('');
   const [cancelMessage, setCancelMessage] = useState('');
+  const {username} = useContext(UserContext);
 
   const searchParams = {
     'truck_type': truckType,
@@ -104,10 +106,13 @@ export function TruckContextProvider({children}: {children: ReactNode}) {
   ))
 
   const {data: reservations, isLoading: isLoadingReservations, refetch: refetchReservations} = useQuery('reservations', () => fetch(
-    '/api/reservations/'
+  '/api/reservations/'
   ).then(res =>
      res.json()
-  ))
+  ), {
+    enabled: !!username,
+    initialData: []
+  })
 
   // this initially queries twice that's fixable.
   useEffect(() => {
@@ -168,7 +173,7 @@ export function TruckContextProvider({children}: {children: ReactNode}) {
       setEndTime,
       createReservation: createReservation.mutate,
       isLoadingReservations,
-      reservations: isLoadingReservations? [] : convertReservationData(reservations),
+      reservations: isLoadingReservations || !username ? [] : convertReservationData(reservations),
       successMessage,
       cancelReservation: cancelReservation.mutate,
       cancelMessage,
