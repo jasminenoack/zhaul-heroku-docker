@@ -18,16 +18,17 @@ export function NavBar() {
             <NavDropdown title={username ? username : "Account"} id="basic-nav-dropdown">
               {
                 username ?
-                  <React.Fragment><NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item></React.Fragment>
+                  <React.Fragment>
+                    <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+                    <NavDropdown.Item href="/reservations">
+                      Reservations
+                    </NavDropdown.Item>
+                  </React.Fragment>
                   : <React.Fragment>
                     <NavDropdown.Item onClick={() => setShowLogin(!showLogin)}>Login</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => setShowCreateUser(!showCreateUser)}>Create User</NavDropdown.Item>
                   </React.Fragment>
               }
-
-              <NavDropdown.Item href="/reservations">
-                Reservations
-              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

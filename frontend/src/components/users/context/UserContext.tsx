@@ -18,6 +18,7 @@ export const UserContextDefault = {
   showCreateUser: false,
   setShowCreateUser: (value: boolean) => {
   },
+  error: null,
 }
 
 interface UserContext {
@@ -29,6 +30,7 @@ interface UserContext {
   setShowLogin: (value: boolean) => void;
   showCreateUser: boolean;
   setShowCreateUser: (value: boolean) => void;
+  error: null | {[key: string]: string};
 }
 
 export const UserContext = React.createContext<UserContext>(UserContextDefault);
@@ -41,6 +43,7 @@ export function UserContextProvider({children}: { children: ReactNode }) {
   const csrfToken = getCookie('csrftoken') as string;
   const [showLogin, setShowLogin] = useState(false);
   const [showCreateUser, setShowCreateUser] = useState(false);
+  const [error, setError] = useState(null);
 
   function onAuthenticationSuccess() {
     refetch()
@@ -48,9 +51,14 @@ export function UserContextProvider({children}: { children: ReactNode }) {
     setShowCreateUser(false)
   }
 
+  function onAuthenticationError(error: any) {
+    const errorData = error?.response?.data
+    setError(errorData)
+  }
+
   const login: any = useMutation(
     buildLoginPost(csrfToken),
-    {onSuccess: onAuthenticationSuccess}
+    {onSuccess: onAuthenticationSuccess, onError: onAuthenticationError}
   );
 
   const logout: any = useMutation(
@@ -60,7 +68,7 @@ export function UserContextProvider({children}: { children: ReactNode }) {
 
   const createUser: any = useMutation(
     buildCreateUserPost(csrfToken),
-    {onSuccess: onAuthenticationSuccess}
+    {onSuccess: onAuthenticationSuccess, onError: onAuthenticationError}
   );
 
   const context = {
@@ -73,6 +81,7 @@ export function UserContextProvider({children}: { children: ReactNode }) {
     showCreateUser,
     setShowCreateUser,
     createUser: createUser.mutate,
+    error
   };
   return (
     <UserContext.Provider value={context}>

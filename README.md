@@ -122,3 +122,30 @@ brew install tmux
 
 You can run [setupe-tmux](./setup-tmux.sh) to set up a tmux shell set with prefilled commands 
 for running the program and tests. 
+
+# Reading the code 
+
+The primary backend code is in [backend/api](./backend/api)
+The primary frontend code is in [frontend/src/components](./frontend/src/components)
+
+There are notes in the code about some areas where it is relatively clear that things could be improved. 
+As do some earlier sections in the readme.
+
+# Features
+
+You can see a [demo](https://jas-zhaul.herokuapp.com/) of the app on Heroku.
+Even before login you are able to browse the available trucks so that you can see 
+if you are interested in using the site. The reserve button is disabled until you actually login. 
+You can filter the trucks by the date and time you need them and type of truck. The default sets 
+the times as starting in an hour and lasting 2 hours. 
+
+Under the account menu before login you have the option to login or create a new account. 
+If you would like to use a demo account vitor is available: 
+
+- username: vitor
+- password: password
+
+Once you are logged in under the account menu you can logout or view your reservations. 
+If you are looking at your reservations you are able to cancel them. 
+
+If you logout on the reservations page the reservations will disappear but you can still view the empty page. 

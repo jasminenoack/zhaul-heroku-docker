@@ -1,11 +1,12 @@
 import {Button, Modal, Form} from 'react-bootstrap';
 import {useContext, useState} from "react";
 import {UserContext} from "./context/UserContext";
+import Alert from '@mui/material/Alert';
 
 function LoginModal() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const {setShowLogin, login} = useContext(UserContext);
+  const {setShowLogin, login, error} = useContext(UserContext);
 
   return (
     <Modal.Dialog style={{
@@ -22,6 +23,12 @@ function LoginModal() {
 
       <Modal.Body>
         <Form>
+          {
+            error &&
+            Object.keys(error).map(key =>
+              <Alert severity="error"  key={key}>{key}: {error[key]}</Alert>
+            )
+          }
           <Form.Group className="mb-3" controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control type="username" placeholder="Enter username" onChange={(e) => setUsername(e.target.value)}/>
