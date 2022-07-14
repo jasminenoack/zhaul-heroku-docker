@@ -20,12 +20,14 @@ class ReservationSerializerTestCase(TestCase):
             start_datetime=datetime(2020, 1, 1, 12, tzinfo=pytz.UTC),
             end_datetime=datetime(2020, 1, 3, 3, tzinfo=pytz.UTC),
             truck=truck,
+            id=5,
         )
         serializer = ReservationSerializer(reservation)
         assert serializer.data == {
             'start_time': '2020-01-01T13:00:00+01:00',
             'end_time': '2020-01-03T04:00:00+01:00',
-            'total_price': '75.00',
+            'total_price': '195.00',
             'truck_name': 'john',
             'truck_type': 'van',
+            'id': 5,
         }

@@ -12,10 +12,10 @@ class LoginAPIViewTestCase(TestCase):
         user.set_password('lennon')
         user.save()
         url = reverse('api-auth-login')
-        result = self.client.post(url, data=json.dumps({
+        result = self.client.post(url, {
             "username": "john",
             "password": "lennon",
-        }), content_type='json')
+        })
         assert result.status_code == 200
         assert '_auth_user_id' in self.client.session
 
@@ -24,9 +24,9 @@ class LoginAPIViewTestCase(TestCase):
         user.set_password('lennon')
         user.save()
         url = reverse('api-auth-login')
-        result = self.client.post(url, data=json.dumps({
+        result = self.client.post(url, {
             "password": "lennon",
-        }), content_type='json')
+        })
         assert result.status_code == 400
 
     def test_400_if_missing_password(self):
@@ -34,9 +34,9 @@ class LoginAPIViewTestCase(TestCase):
         user.set_password('lennon')
         user.save()
         url = reverse('api-auth-login')
-        result = self.client.post(url, data=json.dumps({
+        result = self.client.post(url, data={
             "username": "john",
-        }), content_type='json')
+        })
         assert result.status_code == 400
 
     def test_400_if_invalid_credentials(self):
@@ -44,10 +44,10 @@ class LoginAPIViewTestCase(TestCase):
         user.set_password('lennon')
         user.save()
         url = reverse('api-auth-login')
-        result = self.client.post(url, data=json.dumps({
+        result = self.client.post(url, data={
             "username": "john",
             "password": "wrong",
-        }), content_type='json')
+        })
         assert result.status_code == 400
 
 
@@ -78,10 +78,10 @@ class RegisterUserTestCase(TestCase):
 
     def test_post(self):
         url = reverse('create_user')
-        result = self.client.post(url, data=json.dumps({
+        result = self.client.post(url, {
             "username": "john",
             "password": "lennon",
-        }), content_type='json')
+        })
         assert result.status_code == 200
         user = User.objects.get()
         assert user.username == 'john'

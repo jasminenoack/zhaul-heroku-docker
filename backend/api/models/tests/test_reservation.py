@@ -7,8 +7,8 @@ import pytz
 from .. import Truck, Reservation
 
 
-class TestTotalPrice(TestCase):
-    def test_returns_the_total_price_rounded_to_the_hour(self):
+class ÒTestTotalPrice(TestCase):
+    def test_returns_the_total_price_under_a_day(self):
         start_datetime = datetime(2020, 1, 1, 12, tzinfo=pytz.UTC)
         end_datetime = datetime(2020, 1, 1, 16, 15, tzinfo=pytz.UTC)
         truck = Truck(
@@ -20,3 +20,16 @@ class TestTotalPrice(TestCase):
             truck=truck
         )
         assert reservation.total_price() == Decimal(21.25)
+
+    def test_returns_the_total_price_over_a_day(self):
+        start_datetime = datetime(2020, 1, 1, 12, tzinfo=pytz.UTC)
+        end_datetime = datetime(2020, 1, 2, 16, 15, tzinfo=pytz.UTC)
+        truck = Truck(
+            price_per_hour=Decimal(5)
+        )
+        reservation = Reservation(
+            start_datetime=start_datetime,
+            end_datetime=end_datetime,
+            truck=truck
+        )
+        assert reservation.total_price() == Decimal(141.25)

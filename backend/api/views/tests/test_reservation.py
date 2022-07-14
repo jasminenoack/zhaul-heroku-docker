@@ -27,7 +27,7 @@ class CreateReservationTestCase(TestCase):
         user = User.objects.create(username='john')
         self.client.force_login(user)
         url = reverse("reservations-list")
-        result = self.client.post(url, data=json.dumps(data), content_type='json')
+        result = self.client.post(url, data=data)
         assert result.status_code == 200
         reservation = Reservation.objects.get()
         assert reservation.user == user
@@ -51,6 +51,7 @@ class ViewReservations(TestCase):
             end_datetime=datetime(2020, 1, 3, 3, tzinfo=pytz.UTC),
             truck=truck,
             user=user,
+            id=6,
         )
         url = reverse("reservations-list")
         result = self.client.get(url)
@@ -59,9 +60,10 @@ class ViewReservations(TestCase):
             {
                 'start_time': '2020-01-01T13:00:00+01:00',
                 'end_time': '2020-01-03T04:00:00+01:00',
-                'total_price': '75.00',
+                'total_price': '195.00',
                 'truck_name': 'john',
-                'truck_type': 'van'
+                'truck_type': 'van',
+                'id': 6,
             }
         ]
 
