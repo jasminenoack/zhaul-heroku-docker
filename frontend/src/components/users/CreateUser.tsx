@@ -8,7 +8,7 @@ function CreateUser() {
   const {setShowCreateUser, createUser} = useContext(UserContext);
 
   return (
-    <Modal.Dialog style={{position: 'absolute', top: '100px', left: '50%', transform: 'translateX(-50%)'}}>
+    <Modal.Dialog style={{width: "100%", zIndex: 400, position: 'absolute', top: '100px', left: '50%', transform: 'translateX(-50%)'}}>
       <Modal.Header>
         <Modal.Title>Create User</Modal.Title>
       </Modal.Header>

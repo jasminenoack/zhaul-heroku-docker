@@ -1,6 +1,5 @@
 import React, {ReactNode, useState} from 'react';
 import {useQuery, useMutation} from 'react-query'
-import axios from 'axios'
 import {getCookie} from "../../helpers";
 import {LoginType} from "./types";
 import {buildCreateUserPost, buildLoginPost, buildLogoutDelete, getCurrentUser} from "./api";
