@@ -34,6 +34,9 @@ interface UserContext {
 export const UserContext = React.createContext<UserContext>(UserContextDefault);
 
 export function UserContextProvider({children}: { children: ReactNode }) {
+  /*
+ * This manages the state around users
+ * */
   const {data, refetch} = useQuery('user', getCurrentUser);
   const csrfToken = getCookie('csrftoken') as string;
   const [showLogin, setShowLogin] = useState(false);

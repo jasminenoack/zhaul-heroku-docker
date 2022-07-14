@@ -61,6 +61,11 @@ export const TruckContext = React.createContext<TruckContext>(TruckContextDefaul
 
 
 export function TruckContextProvider({children}: { children: ReactNode }) {
+  /*
+  * This manages the state around trucks and reservations.
+  * I have them together because a lot of the time if one changes the other will also change.
+  * For example, if I make a reservation I need to update both the truck and reservation list.
+  * */
   const csrfToken = getCookie('csrftoken') as string;
   const [truckType, setTruckType] = useState('');
   const [startTime, setStartTime] = useState(addHours(1, new Date()));

@@ -7,7 +7,7 @@ import pytz
 from .. import Truck, Reservation
 
 
-class ÒTestTotalPrice(TestCase):
+class TestTotalPrice(TestCase):
     def test_returns_the_total_price_under_a_day(self):
         start_datetime = datetime(2020, 1, 1, 12, tzinfo=pytz.UTC)
         end_datetime = datetime(2020, 1, 1, 16, 15, tzinfo=pytz.UTC)
