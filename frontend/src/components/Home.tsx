@@ -5,6 +5,9 @@ import {
 import {Card, Placeholder} from 'react-bootstrap'
 import {TruckInterface} from "./types";
 import {TruckList} from "./TruckList";
+import Typography from '@mui/material/Typography';
+import {useContext} from "react";
+import {TruckContext} from "../contexts/TruckContext";
 
 
 function Loading() {
@@ -28,32 +31,21 @@ function Loading() {
 }
 
 
-function convertTruckData(trucks: any): TruckInterface[] {
-  return trucks.map((truck: any) => ({
-    name: truck.name,
-    type: truck.truck_type,
-    id: truck.id,
-    pricePerHour: truck.price_per_hour
-  }))
-}
+
 
 
 export function Home() {
-  const query = useQuery('trucks', () => fetch(
-    '/api/trucks/'
-  ).then(res =>
-     res.json()
-  ))
+  const {isLoading} = useContext(TruckContext)
 
-  if (query.isLoading) {
+  if (isLoading) {
     return <Loading/>
   }
 
   return (
     <>
       <main>
-        <h2>Welcome to ZHaul enjoy our trucks</h2>
-        <TruckList trucks={convertTruckData(query.data)}/>
+        <Typography variant="h3" component="div" gutterBottom>Welcome to ZHaul enjoy our trucks</Typography>
+        <TruckList/>
       </main>
     </>
   );

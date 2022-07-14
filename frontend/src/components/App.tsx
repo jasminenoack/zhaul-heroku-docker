@@ -12,6 +12,10 @@ import {UserContext, UserContextProvider} from "../contexts/UserContext";
 import LoginModal from "./Login";
 import {useContext} from "react";
 import CreateUser from "./CreateUser";
+import {TruckContextProvider} from "../contexts/TruckContext";
+import Box from '@mui/material/Box';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 const queryClient = new QueryClient()
 
@@ -19,7 +23,7 @@ const queryClient = new QueryClient()
 function Layout() {
   const {showLogin, showCreateUser} = useContext(UserContext);
   return (
-    <div>
+    <Box sx={{padding: '5px'}}>
         <NavBar/>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -31,16 +35,20 @@ function Layout() {
         {
           showCreateUser && <CreateUser/>
         }
-    </div>
+    </Box>
   )
 }
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <LocalizationProvider dateAdapter={AdapterMoment}>
       <UserContextProvider>
-        <Layout/>
+        <TruckContextProvider>
+          <Layout/>
+        </TruckContextProvider>
     </UserContextProvider>
+      </LocalizationProvider>
   </QueryClientProvider>
 )
 }

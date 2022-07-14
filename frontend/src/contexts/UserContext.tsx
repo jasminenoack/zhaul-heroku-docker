@@ -1,6 +1,7 @@
 import React, {ReactNode, useState} from 'react';
 import {useQuery, useMutation} from 'react-query'
 import axios from 'axios'
+import {getCookie} from "./helpers";
 
 export interface LoginType {
   username: string;
@@ -36,22 +37,6 @@ function getCurrentUser() {
       return res.data
     }).catch(err => console.log(err));
 }
-
-function getCookie(name: string) {
-  if (!document.cookie) {
-    return null;
-  }
-
-  const xsrfCookies = document.cookie.split(';')
-    .map(c => c.trim())
-    .filter(c => c.startsWith(name + '='));
-
-  if (xsrfCookies.length === 0) {
-    return null;
-  }
-  return decodeURIComponent(xsrfCookies[0].split('=')[1]);
-}
-
 
 
 export function UserContextProvider({children}: {children: ReactNode}) {
