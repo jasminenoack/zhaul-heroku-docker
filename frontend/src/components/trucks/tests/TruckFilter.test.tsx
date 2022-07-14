@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import {TruckFilter} from "../TruckFilter";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import {TruckFilter} from "../TruckFilter";
 
 test('Renders truck information', () => {
   render(<LocalizationProvider dateAdapter={AdapterMoment}><TruckFilter/></LocalizationProvider>);

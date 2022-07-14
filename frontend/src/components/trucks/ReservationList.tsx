@@ -1,6 +1,6 @@
 import {TruckFilter} from "./TruckFilter";
 import {useContext} from "react";
-import {TruckContext} from "../contexts/TruckContext";
+import {TruckContext} from "./context/TruckContext";
 import {LoadingCard} from "./LoadingCard";
 import Typography from '@mui/material/Typography';
 import {ReservationCard} from "./ReservationCard";

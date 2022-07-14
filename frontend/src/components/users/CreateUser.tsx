@@ -1,6 +1,6 @@
 import {Button, Modal, Form} from 'react-bootstrap';
 import {useContext, useState} from "react";
-import {UserContext} from "../contexts/UserContext";
+import {UserContext} from "./context/UserContext";
 
 function CreateUser() {
   const [username, setUsername] = useState('')

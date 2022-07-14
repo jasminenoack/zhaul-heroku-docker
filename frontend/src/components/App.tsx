@@ -7,16 +7,16 @@ import {
    QueryClient,
    QueryClientProvider,
  } from 'react-query'
-import {UserContext, UserContextProvider} from "../contexts/UserContext";
-import LoginModal from "./Login";
+import {UserContext, UserContextProvider} from "./users/context/UserContext";
+import LoginModal from "./users/Login";
 import {useContext} from "react";
-import CreateUser from "./CreateUser";
-import {TruckContextProvider} from "../contexts/TruckContext";
+import CreateUser from "./users/CreateUser";
+import {TruckContextProvider} from "./trucks/context/TruckContext";
 import Box from '@mui/material/Box';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import {TruckList} from "./TruckList";
-import {ReservationList} from "./ReservationList";
+import {TruckList} from "./trucks/TruckList";
+import {ReservationList} from "./trucks/ReservationList";
 
 const queryClient = new QueryClient()
 

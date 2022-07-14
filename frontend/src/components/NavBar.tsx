@@ -1,7 +1,7 @@
 import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
-import {UserContext} from "../contexts/UserContext";
 import {useContext} from "react";
 import React from 'react';
+import {UserContext} from "./users/context/UserContext";
 
 export function NavBar() {
   const {showLogin, logout, username, setShowLogin, showCreateUser, setShowCreateUser} = useContext(UserContext);

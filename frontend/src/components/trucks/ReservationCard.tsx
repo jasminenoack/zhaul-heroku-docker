@@ -4,10 +4,11 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import {ReservationInterface, TruckContext} from "../contexts/TruckContext";
-import {imageMap, truckTypeMap} from "./constants";
+import {TruckContext} from "./context/TruckContext";
+import {imageMap, truckTypeMap} from "../constants";
 import Typography from '@mui/material/Typography';
 import {useContext} from "react";
+import {ReservationInterface} from "./context/types";
 
 
 export function ReservationCard(props: ReservationInterface) {

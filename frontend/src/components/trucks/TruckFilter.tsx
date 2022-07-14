@@ -2,11 +2,11 @@ import Box from '@mui/material/Box';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
 import React, {useContext} from 'react'
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import {TruckContext} from "../contexts/TruckContext";
+import {TruckContext} from "./context/TruckContext";
 
 export function TruckFilter() {
   const {startTime, endTime, truckType, setStartTime, setEndTime, setTruckType} = useContext(TruckContext)

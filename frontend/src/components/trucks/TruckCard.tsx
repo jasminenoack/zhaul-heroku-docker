@@ -4,10 +4,11 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import {imageMap, truckTypeMap} from "./constants";
+import {imageMap, truckTypeMap} from "../constants";
 import {useContext} from "react";
-import {TruckContext, TruckInterface} from "../contexts/TruckContext";
-import {UserContext} from "../contexts/UserContext";
+import {TruckContext} from "./context/TruckContext";
+import {UserContext} from "../users/context/UserContext";
+import {TruckInterface} from "./context/types";
 
 
 export function TruckCard(props: TruckInterface) {

@@ -1,6 +1,6 @@
 import {Button, Modal, Form} from 'react-bootstrap';
 import {useContext, useState} from "react";
-import {UserContext} from "../contexts/UserContext";
+import {UserContext} from "./context/UserContext";
 
 function LoginModal() {
   const [username, setUsername] = useState('')
