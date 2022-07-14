@@ -1,16 +1,7 @@
-import {
-   useQuery,
- } from 'react-query'
-
 import {Card, Placeholder} from 'react-bootstrap'
-import {TruckInterface} from "./types";
-import {TruckList} from "./TruckList";
-import Typography from '@mui/material/Typography';
-import {useContext} from "react";
-import {TruckContext} from "../contexts/TruckContext";
 
 
-function Loading() {
+export function LoadingCard() {
   return (
     <div className="d-flex justify-content-around">
       <Card style={{ width: '18rem' }}>
@@ -27,26 +18,5 @@ function Loading() {
         </Card.Body>
       </Card>
     </div>
-  );
-}
-
-
-
-
-
-export function Home() {
-  const {isLoading} = useContext(TruckContext)
-
-  if (isLoading) {
-    return <Loading/>
-  }
-
-  return (
-    <>
-      <main>
-        <Typography variant="h3" component="div" gutterBottom>Welcome to ZHaul enjoy our trucks</Typography>
-        <TruckList/>
-      </main>
-    </>
   );
 }

@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import {NavBar} from "./NavBar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {About} from './About'
-import {Home} from "./Home";
 import {
    QueryClient,
    QueryClientProvider,
@@ -16,6 +15,8 @@ import {TruckContextProvider} from "../contexts/TruckContext";
 import Box from '@mui/material/Box';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import {TruckList} from "./TruckList";
+import {ReservationList} from "./ReservationList";
 
 const queryClient = new QueryClient()
 
@@ -23,10 +24,11 @@ const queryClient = new QueryClient()
 function Layout() {
   const {showLogin, showCreateUser} = useContext(UserContext);
   return (
-    <Box sx={{padding: '5px'}}>
+    <Box sx={{padding: '5px', marginBottom: "60px"}} className="clearfix">
         <NavBar/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<TruckList />} />
+          <Route path="reservations" element={<ReservationList />} />
           <Route path="about" element={<About />} />
         </Routes>
         {

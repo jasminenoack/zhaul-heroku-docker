@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+import pytz
 from django.contrib.auth.models import User
 from django.test import TestCase
 
@@ -40,8 +41,8 @@ class TruckViewSetTestCase(TestCase):
         Reservation.objects.create(
             truck=truck,
             user=user,
-            start_datetime=datetime(2022, 7, 13, 5),
-            end_datetime=datetime(2022, 7, 15, 5)
+            start_datetime=datetime(2022, 7, 13, 5, tzinfo=pytz.UTC),
+            end_datetime=datetime(2022, 7, 15, 5, tzinfo=pytz.UTC)
         )
         url = f'{reverse("trucks-list")}?truck_type=&start_time=2022-07-14T00%3A37%3A17.406Z&end_time=2022-07-14T00%3A37%3A17.406Z'
         result = self.client.get(url)
@@ -59,8 +60,8 @@ class TruckViewSetTestCase(TestCase):
         Reservation.objects.create(
             truck=truck,
             user=user,
-            start_datetime=datetime(2022, 7, 13, 5),
-            end_datetime=datetime(2022, 7, 15, 5)
+            start_datetime=datetime(2022, 7, 13, 5, tzinfo=pytz.UTC),
+            end_datetime=datetime(2022, 7, 15, 5, tzinfo=pytz.UTC)
         )
         url = f'{reverse("trucks-list")}?truck_type=pickup&start_time=2022-07-14T00%3A37%3A17.406Z&end_time=2022-07-14T00%3A37%3A17.406Z'
         result = self.client.get(url)
