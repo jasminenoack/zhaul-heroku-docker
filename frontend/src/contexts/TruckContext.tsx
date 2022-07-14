@@ -43,12 +43,10 @@ export function TruckContextProvider({children}: {children: ReactNode}) {
   const [startTime, setStartTime] = useState(new Date());
   const [endTime, setEndTime] = useState(new Date());
 
-  console.log(startTime.toTimeString())
-
   const searchParams = {
     'truck_type': truckType,
-    'start_time': startTime.toTimeString(),
-    'end_time': endTime.toTimeString(),
+    'start_time': startTime.toISOString(),
+    'end_time': endTime.toISOString(),
   }
   const url = `/api/trucks/?${new URLSearchParams(searchParams)}`;
   const {data, isLoading, refetch} = useQuery('trucks', () => fetch(

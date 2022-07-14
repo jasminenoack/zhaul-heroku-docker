@@ -15,6 +15,7 @@ django-cors-headers = "*"
 dj-database-url = "*"
 whitenoise = "*"
 gunicorn = "*"
+python-dateutil = "*"
 
 [dev-packages]
 coverage = "*"
